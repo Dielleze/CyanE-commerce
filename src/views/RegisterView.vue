@@ -3,12 +3,12 @@
     <form class="login-form">
       <h2>Login</h2>
       <div class="form-group">
-        <label for="username">Email</label>
-        <input type="text" id="email" v-model="username" placeholder="Enter email">
+        <label for="username">Username</label>
+        <input type="text" id="username" v-model="username" placeholder="Enter username">
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="password" placeholder="Enter password">
+        <label for="email">Email</label>
+        <input type="text" id="email" v-model="email" placeholder="Enter Email">
       </div>
       <div class="form-group">
         <label for="password">Password</label>

@@ -3,15 +3,14 @@
     <form class="login-form">
       <h2>Login</h2>
       <div class="form-group">
-        <label for="username">Email</label>
-        <input type="text" id="email" v-model="username" placeholder="Enter email">
+        <label for="email">Email</label>
+        <input type="text" id="email" v-model="email" placeholder="Enter email">
       </div>
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" id="password" v-model="password" placeholder="Enter password">
       </div>
       <button type="submit" class="login-button" @click.prevent="login">Login</button>
-      <h1>Register </h1>
     </form>
   </div>
 </template>
@@ -84,7 +83,7 @@ export default {
   background-color: #acc3dc;
   color: #fff;
   border: none;
-  border-radius: 3px;
+  border-radius: 100px;
   font-size: 1.2rem;
   text-transform: uppercase;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
