@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/return-in-computed-property -->
 <!-- eslint-disable vue/multi-word-component-names -->
 <!-- eslint-disable vue/require-v-for-key -->
 <!-- eslint-disable vue/multi-word-component-names -->
@@ -16,12 +17,20 @@
         >
           <router-link v-bind:to="item.path">{{item.name}}</router-link>
         </li>
+        <li v-if="user"> Hello {{ user.email }}<Button @click="handleLogout">Logout</Button>
+</li>
       </ul>
     </nav>
 </template>
 
 <script>
+
+import { getAuth, signOut } from '@firebase/auth';
+import { mapState } from 'vuex';
   export default {
+    computed:{
+      ...mapState(['user'])
+    },
     data() {
       return{
         title: 'Cyan',
@@ -35,6 +44,12 @@
           { path: '/login', name: 'Login' },
 
         ]
+      }
+    }
+    ,
+    methods: {
+      handleLogout(){
+        this.$store.dispatch('logoutUser', null);
       }
     }
   }

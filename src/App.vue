@@ -5,11 +5,20 @@
 
 <script>
 import Header from './components/Header';
+import { getAuth, onAuthStateChanged } from '@firebase/auth';
 
   export default {
+    created(){
+      const auth = getAuth();
+      onAuthStateChanged(auth, (userAuth)=>{
+        if(userAuth){
+          this.$store.dispatch('userLogin', userAuth)
+        }
+      })
+    },
     components:{
     Header,
-}
+    }
   }
 </script>
 <style>

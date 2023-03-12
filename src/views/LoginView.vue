@@ -2,7 +2,7 @@
 <!-- eslint-disable -->
 <template>
   <div class="login-container">
-    <div v-if="user">{{ user.email }}</div>
+    <div></div>
     <form @submit.prevent="login" class="login-form">
       <h2>Login</h2>
       <div class="form-group">
@@ -15,36 +15,28 @@
       </div>
       <button type="submit" class="login-button" >Login</button>
     </form>
-  </div>
+  </div> 
   <FooterView/>
 </template>
 
 <script>
 import FooterView from './FooterView.vue';
 import '@/firebase';
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from '@firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
 export default {
   data() {
     return {
       email: '',
       password: '',
-      user: null,
-    }
+     }
   },
   methods: {
     login() {
       const auth = getAuth();
       const user = signInWithEmailAndPassword(auth, this.email, this.password);
       console.log(user);
+      this.$router.push('/');
     }
-  },
-  created(){
-    const auth = getAuth();
-    onAuthStateChanged(auth, (userAuth)=>{
-      if(userAuth){
-        this.user = userAuth
-      }
-    })
   },
   components:{
     FooterView
