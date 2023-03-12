@@ -9,6 +9,6 @@
   
   import FooterView from './FooterView.vue';
   export default {
-    components:{ FooterView }
+    components:{ FooterView } 
   }
 </script>
