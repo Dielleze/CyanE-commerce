@@ -25,7 +25,6 @@
 
 <script>
 
-import { getAuth, signOut } from '@firebase/auth';
 import { mapState } from 'vuex';
   export default {
     computed:{
