@@ -1,17 +1,14 @@
 <template>
   <Header />
   <router-view/>
-  <FooterView />
 </template>
 
 <script>
-  import Header from './components/Header';
-import FooterView from './views/FooterView.vue';
+import Header from './components/Header';
 
   export default {
     components:{
     Header,
-    FooterView
 }
   }
 </script>

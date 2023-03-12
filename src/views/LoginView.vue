@@ -1,6 +1,9 @@
+<!-- eslint-disable no-undef -->
+<!-- eslint-disable -->
 <template>
   <div class="login-container">
-    <form class="login-form">
+    <div v-if="user">{{ user.email }}</div>
+    <form @submit.prevent="login" class="login-form">
       <h2>Login</h2>
       <div class="form-group">
         <label for="email">Email</label>
@@ -10,23 +13,41 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="password" placeholder="Enter password">
       </div>
-      <button type="submit" class="login-button" @click.prevent="login">Login</button>
+      <button type="submit" class="login-button" >Login</button>
     </form>
   </div>
+  <FooterView/>
 </template>
 
 <script>
+import FooterView from './FooterView.vue';
+import '@/firebase';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from '@firebase/auth';
 export default {
   data() {
     return {
-      username: '',
-      password: ''
+      email: '',
+      password: '',
+      user: null,
     }
   },
   methods: {
     login() {
-      // Handle login logic here
+      const auth = getAuth();
+      const user = signInWithEmailAndPassword(auth, this.email, this.password);
+      console.log(user);
     }
+  },
+  created(){
+    const auth = getAuth();
+    onAuthStateChanged(auth, (userAuth)=>{
+      if(userAuth){
+        this.user = userAuth
+      }
+    })
+  },
+  components:{
+    FooterView
   }
 }
 </script>

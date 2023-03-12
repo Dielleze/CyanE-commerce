@@ -1,11 +1,7 @@
 <template>
   <div class="login-container">
-    <form class="login-form">
+    <form @submit.prevent="handleRegister" class="login-form">
       <h2>Login</h2>
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="username" placeholder="Enter username">
-      </div>
       <div class="form-group">
         <label for="email">Email</label>
         <input type="text" id="email" v-model="email" placeholder="Enter Email">
@@ -14,24 +10,34 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="password" placeholder="Enter password">
       </div>
-      <button type="submit" class="login-button" @click.prevent="login">Login</button>
+      <button type="submit" class="login-button">Register</button>
     </form>
   </div>
+  <FooterView/>
 </template>
 
 <script>
+import FooterView from './FooterView.vue';
+import '@/firebase';
+import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
+
 export default {
-  data() {
-    return {
-      username: '',
-      password: ''
-    }
-  },
-  methods: {
-    login() {
-      // Handle login logic here
-    }
-  }
+    data() {
+        return {
+            email: "",
+            password: ""
+        };
+    },
+    methods: {
+        async handleRegister() {
+          const auth = getAuth();
+          const { user } = await createUserWithEmailAndPassword(auth, this.email, this.password)
+          console.log(user);
+          // signOut(auth);
+          // this.$router.push('./login')
+        }
+    },
+    components: { FooterView }
 }
 </script>
 
@@ -40,7 +46,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh;
+  height: 90vh;
 }
 
 .login-form {
@@ -87,7 +93,7 @@ export default {
   background-color: #acc3dc;
   color: #fff;
   border: none;
-  border-radius: 3px;
+  border-radius: 100px;
   font-size: 1.2rem;
   text-transform: uppercase;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
