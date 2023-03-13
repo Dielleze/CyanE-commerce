@@ -1,3 +1,4 @@
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
@@ -60,6 +61,19 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+const guestRouteNames = ['login', 'register'];
+
+router.beforeEach((to, from, next)=>{
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user)=>{
+    if((guestRouteNames.includes(to.name)) && user){
+      next({name: 'home'})
+    }else{
+      next()
+    }
+  })
 })
 
 export default router

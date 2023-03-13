@@ -17,8 +17,12 @@
         >
           <router-link v-bind:to="item.path">{{item.name}}</router-link>
         </li>
-        <li v-if="user"> Hello {{ user.email }}<Button @click="handleLogout">Logout</Button>
-</li>
+        <li v-if="user"> Hello {{ user.email }}<Button @click="handleLogout">Logout</Button></li>
+
+          <div class="div" v-else>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+          </div>
       </ul>
     </nav>
 </template>
@@ -39,9 +43,7 @@ import { mapState } from 'vuex';
           { path: '/womensfashion', name: 'Women\'s Fashion' },
           { path: '/bags', name: 'Bags' },
           { path: '/shoes', name: 'Shoes' },
-          { path: '/contactus', name: 'Contact Us' },
-          { path: '/login', name: 'Login' },
-
+          { path: '/contactus', name: 'Contact Us' }
         ]
       }
     }
@@ -85,6 +87,15 @@ import { mapState } from 'vuex';
     flex-direction: row;
     justify-content: space-around;
   }
+  .div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .div li {
+  margin-right: 20px;
+  }
+
   a:link,
   a:visited{
     text-decoration: none;

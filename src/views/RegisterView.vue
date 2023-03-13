@@ -19,7 +19,7 @@
 <script>
 import FooterView from './FooterView.vue';
 import '@/firebase';
-import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword, signOut} from 'firebase/auth'
 
 export default {
     data() {
@@ -33,8 +33,8 @@ export default {
           const auth = getAuth();
           const { user } = await createUserWithEmailAndPassword(auth, this.email, this.password)
           console.log(user);
-          // signOut(auth);
-          // this.$router.push('./login')
+          signOut(auth);
+          this.$router.push('./login')
         }
     },
     components: { FooterView }
