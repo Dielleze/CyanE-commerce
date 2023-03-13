@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express')
 const cors = require('cors');
 const app = express();
@@ -18,6 +19,6 @@ mongoose.connect(`${process.env.MONGO_CONNECTION_UTI}/${process.env.MONGO_DB_NAM
     })
     
     app.listen(process.env.API_PORT, ()=>{
-        console.log(`The server is listening in port ${port}`)
+        console.log(`The server is listening in port ${process.env.API_PORT}`)
     })
 })
