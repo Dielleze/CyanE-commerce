@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-parsing-error -->
 <template>
   <section class="background firstsection">
     <div class="box-main">
@@ -45,7 +46,7 @@
           </p>
       </div>
         <div class="box">
-          <img src="https://i.pinimg.com/564x/9e/ed/f8/9eedf85bfa6493bb4031f103370b414c.jpg" alt="picture goes here">
+          <img src="https://i.pinimg.com/564x/9e/ed/f8/9eedf85bfa6493bb4031f103370b414c.jpg" alt="picture goes here"/>
           <p class="center">
             <p href="#abc" style="text-decoration:none;color:black; font-weight:bold;font-family: 'Langar', cursive;">
               Emily
@@ -55,7 +56,7 @@
             They offer a fantastic selection of products at unbeatable prices, and the quality is always top-notch.</p>
         </div>
           <div class="box">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVvD_i9a6f5LrW0rlFkiKY33KIskHfUVSuzw&usqp=CAU" alt="picture goes here">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVvD_i9a6f5LrW0rlFkiKY33KIskHfUVSuzw&usqp=CAU" alt="picture goes here"/>
             <br>
             <p class="center">
               <p href="#xyz" style="text-decoration:none;color:black; font-weight:bold;font-family: 'Langar', cursive;">
@@ -84,11 +85,12 @@
   }
 </script>
 
-<style>
+<style scoped>
 	.box-main {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+    background-color: #f4f4f4;
 		color: #004d00;
 	}
 
@@ -100,6 +102,7 @@
 	}
 
 	.text-big {
+    display: flex;
 		justify-content: center;
 		align-items: center;
 		font-family: 'Piazzolla', serif;
@@ -108,7 +111,7 @@
 	}
 
 	.text-small {
-		font-family: 'Sansita Swashed', cursive;
+		font-family: 'Sansita Swashed';
 		font-size: 18px;
 	}
 
