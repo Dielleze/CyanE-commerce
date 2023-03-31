@@ -38,7 +38,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/ShoesView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Shoes/ShoesView.vue')
   },
   {
     path: '/login',
@@ -65,12 +65,21 @@ const router = createRouter({
 
 const guestRouteNames = ['login', 'register'];
 
+const routeNames = routes.flatMap((route) => route.children
+  ? route.chilldren.flatMap((route) => route.name).concat(route.name)
+  : route.name
+)
+
 router.beforeEach((to, from, next)=>{
   const auth = getAuth();
   onAuthStateChanged(auth, (user)=>{
     if((guestRouteNames.includes(to.name)) && user){
       next({name: 'home'})
-    }else{
+    }
+    else if( !routeNames.includes(to.name)){
+      next({ name: '404'})
+    }
+    else{
       next()
     }
   })

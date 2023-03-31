@@ -38,7 +38,7 @@ const controller = {
                     error: validateResult.error.message})
         }
     },
-    post: async(req, res)=>{
+    update: async(req, res)=>{
         const validateResult = updateProduct.validate(req.body)
     
         if(validateResult.error){

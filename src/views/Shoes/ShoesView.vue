@@ -18,7 +18,7 @@
 
 <script>
   
-  import FooterView from './FooterView.vue';
+  import FooterView from '../FooterView.vue';
   export default {
     name: "ProductList",
     data(){ 
