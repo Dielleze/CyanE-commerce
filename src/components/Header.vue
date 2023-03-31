@@ -104,6 +104,6 @@ import { mapState } from 'vuex';
   .link:hover {
   transform: scale(1.9);
   background-color: gray;
-  color: white; /* increase the size by 10% */
+  color: white;
 }
 </style>

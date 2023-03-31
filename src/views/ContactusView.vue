@@ -1,21 +1,44 @@
 <template>
-  <section class="backgroundFirstsection">
-    <div class="box-main">
-      <p class="text-big">Contact US</p>
-
-      <div class="firstHalf">
-        <img src="https://wallpaperaccess.com/full/3124512.jpg"/>
-        <p class="text-small">
-        </p>
-        <br>
-        <p class="text-small">
-        </p>
-        <br>
-        <p class="text-small">
-        </p>
+  <section class="firstSection">
+    <div class="container">
+        <div class="wrapper">
+          <div class="photoWrapper">
+            <img src="https://www.vandolph.co.za/wp/wp-content/uploads/2018/09/contact-us-background-2.jpg" alt="" />
+          </div>
+          <div class="textSection">
+            <h1>Contact us</h1>
+            <p>
+              Whenever, wherever
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
   </section>
+  <div class="contact-form">
+    <h2>Contact us via form</h2>
+    <form @submit.prevent="submitForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" v-model="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" v-model="email" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" v-model="subject" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" v-model="message" required></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+    <div v-if="showSuccess" class="success-message">
+      <p>Your message has been sent!</p>
+    </div>
+  </div>
   <FooterView/>
 </template>
 
@@ -23,49 +46,110 @@
   
   import FooterView from './FooterView.vue';
   export default {
-    components:{ FooterView }
+    components:{ FooterView },
+    data() {
+    return {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+      showSuccess: false,
+    };
+  },
+  methods: {
+    submitForm() {
+      this.showSuccess = true;
+    },
+  },
   }
+
 </script>
 
 <style scoped>
-  .backgroundFirstsection{
-    display: flex;
-    background-color: #f4f4f4;
-		color: #004d00;
+  .firstSection {
+    background: url("https://www.vandolph.co.za/wp/wp-content/uploads/2018/09/contact-us-background-2.jpg") no-repeat
+      center;
+    background-size: cover;
+    background-position: center;
+    position: relative;
   }
   img{
-    display: flex;
-    width: 100%;
-    height: 100%;
+    width: 50%;
   }
-
-  .box-main{
+  .wrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+  }
+  .photoWrapper {
+    width: 45%;
+  }
+  .textSection {
+    display: flex;
     flex-direction: column;
+    width: 50%;
+    justify-content: center;
+  }
+  h1 {
+    font-size: 33px;
+    color: white;
   }
 
-  .firstHalf {
-		width: 75%;
-		display: flex;
-		flex-direction: row;
-		justify-content: center
-	}
-
-	.text-big {
-    display: flex;
-		justify-content: center;
-		align-items: center;
-    flex-direction: row;
-		font-family: 'Piazzolla', serif;
-		font-weight: bold;
-		font-size: 41px;
-	}
-
-	.text-small {
-		font-family: 'Sansita Swashed';
-		font-size: 18px;
-	}
-
+  p {
+    font-size: 14px;
+    color: white;
+  }
+  a{
+    color:rgb(90, 187, 228);
+    text-decoration: underline;
+  }
+  .contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 50px;
+  }
+  .contact-form h2 {
+    text-align: center;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  input[type="text"],
+  input[type="email"]
+  {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+  }
+  textarea {
+    height: 150px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+  }
+  button[type="submit"] {
+    background-color: #acc3dc;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  button[type="submit"]:hover {
+    background-color: #0062cc;
+  }
+.success-message {
+  background-color: #DFF2BF;
+  color: #4F8A10;
+  padding: 10px;
+  border: 1px solid #4F8A10;
+  border-radius: 5px;
+  margin-top: 20px;
+}
 </style>

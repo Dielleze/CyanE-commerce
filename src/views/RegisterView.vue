@@ -3,6 +3,10 @@
     <form @submit.prevent="handleRegister" class="login-form">
       <h2>Login</h2>
       <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" v-model="name" placeholder="Enter Name">
+      </div>
+      <div class="form-group">
         <label for="email">Email</label>
         <input type="text" id="email" v-model="email" placeholder="Enter Email">
       </div>
@@ -24,6 +28,7 @@ import {getAuth, createUserWithEmailAndPassword, signOut} from 'firebase/auth'
 export default {
     data() {
         return {
+            name: "",
             email: "",
             password: ""
         };
@@ -41,7 +46,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .login-container {
   display: flex;
   justify-content: center;
