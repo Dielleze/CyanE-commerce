@@ -35,10 +35,17 @@ const routes = [
   {
     path: '/shoes',
     name: 'shoes',
+    children: [
+      {
+        name: 'shoes-create',
+        path: 'create',
+        component: () => import(/* webpackChunkName: "about" */ '../views/Shoes/ShoesCreateView.vue')
+
+      }
+    ]
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Shoes/ShoesView.vue')
   },
   {
     path: '/login',
@@ -66,7 +73,7 @@ const router = createRouter({
 const guestRouteNames = ['login', 'register'];
 
 const routeNames = routes.flatMap((route) => route.children
-  ? route.chilldren.flatMap((route) => route.name).concat(route.name)
+  ? route.children.flatMap((route) => route.name).concat(route.name)
   : route.name
 )
 
