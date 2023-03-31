@@ -1,4 +1,5 @@
 const express = require('express');
+const { categoryController } = require('../controllers/ProductController')
 
 const productRouter = express.Router({ mergeParams: true});
 
