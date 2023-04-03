@@ -3,12 +3,19 @@ import {getAuth, signOut} from 'firebase/auth'
 export default createStore({
   state: {
     user: null,
+    products: [],
   },
   getters: {
   },
   mutations: {
     setUser(state, user){
       state.user = user;
+    },
+    setProducts(state, products){
+      state.products = products;
+    },
+    addProduct(state, product){
+      state.products.push(product);
     }
   },
   actions: {
@@ -20,6 +27,16 @@ export default createStore({
       signOut(auth);
 
       commit('setUser', null)
+    },
+    async createProducts({ commit }, newProduct){
+      const res = await fetch('http://localhost:3000/products',
+        {
+          method:'post',
+          body: JSON.stringify({ newProduct })
+        })
+      const result = res.json();
+      console.log(result);
+      commit('addProduct', result);
     }
   },
   modules: {

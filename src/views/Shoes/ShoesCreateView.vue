@@ -1,8 +1,8 @@
 
 <template>
 
-    <form>
-        <div class="from-group">
+    <form @submit.prevent="createProduct">
+        <div class="from-group" >
             <label for="name" >Name:</label>
             <input id="name"/>
         </div>
@@ -13,3 +13,24 @@
         <button>Create</button>
     </form>
 </template>
+
+<script>
+
+    export default{
+        data() {
+            return {
+                newProduct:{
+                    name: '',
+                    description: ''
+                },
+                allProducts: this.$store.state.products
+            }
+        },
+        methods: {
+            async createProduct() {
+                this.$store.dispatch('createProducts', { ...this.newProduct})
+            }
+        }
+    }
+</script>
+ 
