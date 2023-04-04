@@ -35,6 +35,7 @@ const routes = [
   {
     path: '/shoes',
     name: 'shoes',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Shoes/ShoesView.vue'),
     children: [
       {
         name: 'shoes-create',

@@ -23,7 +23,7 @@
                     name: '',
                     description: ''
                 },
-                allProducts: this.$store.state.products
+                allProducts: this.$store.state.products,
             }
         },
         methods: {

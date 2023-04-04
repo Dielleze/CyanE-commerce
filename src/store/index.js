@@ -28,11 +28,19 @@ export default createStore({
 
       commit('setUser', null)
     },
+    async fetchProducts({ commit }) {
+      const res = await fetch('http://localhost:3000/products');
+      const products = await res.json();
+      commit('setProducts', products)
+     },
     async createProducts({ commit }, newProduct){
       const res = await fetch('http://localhost:3000/products',
         {
           method:'post',
-          body: JSON.stringify({ newProduct })
+          body: JSON.stringify({ newProduct }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
         })
       const result = res.json();
       console.log(result);

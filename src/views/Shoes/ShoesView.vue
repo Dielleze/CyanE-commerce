@@ -5,11 +5,11 @@
   <div class="container">
     <h2 class="title">Product List</h2>
     <ul>
-      <li v-for="product in products"
-       v-bind:key="product.id" class="product-item">
-        <h3>{{ product.name }}</h3>
+      <li v-for="product in this.products"
+       :key="product.id" class="product-item">
+        <h3>{{ product.title }}</h3>
         <p class="description">{{ product.description }}</p>
-        <p class="price">Price: {{ product.price }}</p>
+        <!--<p class="price">Price: {{ product.price }}</p>-->
       </li>
     </ul>
   </div>
@@ -17,32 +17,15 @@
 </template>
 
 <script>
-  
   import FooterView from '../FooterView.vue';
+  import { mapState } from 'vuex';
+  
   export default {
-    name: "ProductList",
-    data(){ 
-      return {
-        products: [{
-              id: 1,
-              name: "Product 1",
-              description: "This is product 1",
-              price: 10,
-            },
-            {
-              id: 2,
-              name: "Product 2",
-              description: "This is product 2",
-              price: 20,
-            },
-            {
-              id: 3,
-              name: "Product 3",
-              description: "This is product 3",
-              price: 30,
-            },
-          ],
-      }
+    computed: {
+      ...mapState(['products'])
+    },
+    mounted() {
+      this.$store.dispatch('fetchProducts');
     },
     components:{ FooterView }
   }

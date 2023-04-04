@@ -12,3 +12,5 @@ productRouter.post('/', categoryController.post)
 productRouter.put('/:id', categoryController.update)
 
 productRouter.delete(':/id', categoryController.delete)
+
+export default productRouter;

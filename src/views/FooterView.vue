@@ -6,8 +6,8 @@
     <h2>Contact</h2>
     
     <address>
-      5534 Somewhere In. The World 22193-10212<br>
-          
+    Malisheve
+    <br>      
       <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
     </address>
   </div>
