@@ -5,4 +5,4 @@ const updateProduct = Joi.object({
     description: Joi.string().allow(null)
 })
 
-export default updateProduct;
+module.exports = updateProduct;

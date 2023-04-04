@@ -37,7 +37,7 @@ export default createStore({
       const res = await fetch('http://localhost:3000/products',
         {
           method:'post',
-          body: JSON.stringify({ newProduct }),
+          body: JSON.stringify(newProduct),
           headers: {
             'Content-Type': 'application/json'
           }

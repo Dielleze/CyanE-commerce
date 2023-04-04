@@ -1,16 +1,22 @@
 const express = require('express');
-const { categoryController } = require('../controllers/ProductController')
+const { 
+    listofProduct,
+    findProductbyId,
+    createProducts,
+    updateProducts,
+    deleteProduct
+} = require('../controllers/ProductController')
 
-const productRouter = express.Router({ mergeParams: true});
+const productRouter = express.Router();
 
-productRouter.get('/', categoryController.list)
+productRouter.get('/', listofProduct)
 
-productRouter.get('/:id', categoryController.find )
+productRouter.get('/:id', findProductbyId )
 
-productRouter.post('/', categoryController.post)
+productRouter.post('/', createProducts)
 
-productRouter.put('/:id', categoryController.update)
+productRouter.put('/:id', updateProducts)
 
-productRouter.delete(':/id', categoryController.delete)
+productRouter.delete(':/id', deleteProduct)
 
-export default productRouter;
+module.exports = productRouter;

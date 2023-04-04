@@ -3,12 +3,12 @@
 
     <form @submit.prevent="createProduct">
         <div class="from-group" >
-            <label for="name" >Name:</label>
-            <input id="name"/>
+            <label for="title" >Name:</label>
+            <input id="title" v-model="newProduct.title"/>
         </div>
         <div class="from-group">
             <label for="description" >Description:</label>
-            <input id="description"/>
+            <input id="description" v-model="newProduct.description"/>
         </div>
         <button>Create</button>
     </form>
@@ -20,7 +20,7 @@
         data() {
             return {
                 newProduct:{
-                    name: '',
+                    title: '',
                     description: ''
                 },
                 allProducts: this.$store.state.products,

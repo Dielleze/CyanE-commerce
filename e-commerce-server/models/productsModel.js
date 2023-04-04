@@ -9,4 +9,4 @@ const schema = mongoose.Schema({
 
 const model = mongoose.model("products", schema)
 
-export default model;
+module.exports = model;

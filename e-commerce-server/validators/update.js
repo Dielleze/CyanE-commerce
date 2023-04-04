@@ -5,4 +5,4 @@ const createProduct = Joi.object({
     description: Joi.string().allow(null)
 })
 
-export default createProduct;
+module.exports = createProduct;

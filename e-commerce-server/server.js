@@ -5,7 +5,6 @@ const app = express();
 const mongoose = require('mongoose');
 const productRouter = require('./routes/productsRoute')
 
-
 mongoose.connect(`${process.env.MONGO_CONNECTION_UTI}/${process.env.MONGO_DB_NAME}`).then(()=>{
     console.log("Conected to db");
     app.use(cors({
