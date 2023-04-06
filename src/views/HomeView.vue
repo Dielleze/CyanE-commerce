@@ -61,7 +61,7 @@
               </div>
               <div class="product">
                 <div class="img-container">
-                  <img src="" alt="" />
+                  <img src="https://img.freepik.com/premium-photo/pair-black-shoes-are-sitting-stool-front-brick-wall_361821-2975.jpg?w=2000" alt="" />
                   <div class="addCart">
                     <i class="fas fa-shopping-cart"></i>
                   </div>
@@ -75,7 +75,7 @@
               </div>
               <div class="product">
                 <div class="img-container">
-                  <img src="" alt="" />
+                  <img src="https://img.freepik.com/premium-photo/pair-black-shoes-are-sitting-stool-front-brick-wall_361821-2975.jpg?w=2000" alt="" />
                   <div class="addCart">
                     <i class="fas fa-shopping-cart"></i>
                   </div>
