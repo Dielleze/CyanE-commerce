@@ -18,6 +18,7 @@ async function findContactbyId(req,res){
 
 async function createContact(req,res){
     try {
+        console.log(req.body)
         const contact = new contacts(req.body);
         await contact.save()
         return res.json(contact)

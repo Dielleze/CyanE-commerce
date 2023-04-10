@@ -1,46 +1,60 @@
-
 <template>
+  <div>
+    <h1>Add a new product</h1>
+    <form @submit.prevent="addProduct">
+      <label>Name:</label>
+      <input class='input' type="text" v-model="product.tittle" required>
 
-    <form @submit.prevent="createProduct">
-        <div class="from-group" >
-            <label for="title" >Name:</label>
-            <input class="input" id="title" v-model="newProduct.title"/>
-        </div>
-        <div class="from-group">
-            <label for="description" >Description:</label>
-            <input class="input" id="description" v-model="newProduct.description"/>
-        </div>
-        <div class="from-group">
-            <label for="price" >Price:</label>
-            <input class="input" id="price" v-model="newProduct.price"/>
-        </div>
-        <div class="from-group1">
-            <label for="image" >Image:</label>
-            <input type="file" id="image"/>
-        </div>
-        <button>Create</button>
+      <label>Price:</label>
+      <input type="number" class='input' v-model="product.price" required>
+      
+      <label>Category:</label>
+      <select class="input" v-model="product.category" required>
+        <option v-for="category in categories" :key="category">{{ category }}</option>
+      </select>
+      
+      <label>Description:</label>
+      <textarea class='input' v-model="product.description" required></textarea>
+      
+      
+      <button type="submit">Add product</button>
     </form>
     <FooterView/>
+  </div>
 </template>
 
 <script>
     import FooterView from '../FooterView.vue';
+    import axios from 'axios'
     export default{
-    data() {
-        return {
-            newProduct: {
-                title: "",
-                description: "",
-                price: "",
-                image: "",
-            },
-            allProducts: this.$store.state.products,
-        };
-    },
-    methods: {
-        async createProduct() {
-            this.$store.dispatch("createProducts", { ...this.newProduct });
-        }
+        data() {
+    return {
+      product: {
+      tittle: '',
+      description: '',
+      price: '',
+      category: ''
+      },
+      categories: ['bags', 'shoes', 'clothes']
+    }
+  },
+  methods: {
+    addProduct() {
+      let apiURL = "http://localhost:3000/products/create";      
+      axios.post(apiURL, this.product)
+        .then(response => {
+          console.log('Product added successfully', response);
+          this.product = {
+          name: '',
+          description: '',
+          price: '',
+          category: '',
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
     },
     components: { FooterView }
 }
@@ -56,6 +70,7 @@
         margin-bottom: 20px;
     }
     .input {
+                margin-bottom: 20px;
         width: 100%;
         padding: 10px;
         border: none;

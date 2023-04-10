@@ -13,7 +13,7 @@ productRouter.get('/', listofProduct)
 
 productRouter.get('/:id', findProductbyId )
 
-productRouter.post('/', createProducts)
+productRouter.post('/create', createProducts)
 
 productRouter.put('/:id', updateProducts)
 

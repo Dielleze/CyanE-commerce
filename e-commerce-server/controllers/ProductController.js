@@ -4,7 +4,6 @@ const { updateProduct} = require('../validators/update');
 const productsModel = require ('../models/productsModel')
 const { StatusCodes, ReasonPhrases} = require('http-status-codes')
 
-
 async function listofProduct(req,res){
     const list = await productsModel.find();
     return res.json(list);
@@ -32,14 +31,14 @@ async function createProducts(req,res){
     // ;
     
     try{
+        console.log(req.body)
         const newProduct = new productsModel(req.body);
+        console.log(newProduct)
         await newProduct.save()
         console.log(req.body)
         return res.json(newProduct)
     } catch(err){
-        return res.json(StatusCodes.UNAUTHORIZED)
-        .json({ message: ReasonPhrases.UNAUTHORIZED,
-        error: validateResult.error.message})
+        return res.json(err)
     }
 }
 

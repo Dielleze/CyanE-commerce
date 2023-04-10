@@ -19,19 +19,19 @@
     <form @submit.prevent="submitForm">
       <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" id="name" v-model="name" required>
+        <input type="text" id="name" v-model="contact.name" required>
       </div>
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" v-model="email" required>
+        <input type="email" id="email" v-model="contact.email" required>
       </div>
       <div class="form-group">
         <label for="subject">Subject:</label>
-        <input type="text" id="subject" v-model="subject" required>
+        <input type="text" id="subject" v-model="contact.subject" required>
       </div>
       <div class="form-group">
         <label for="message">Message:</label>
-        <textarea id="message" v-model="message" required></textarea>
+        <textarea id="message" v-model="contact.message" required></textarea>
       </div>
       <button type="submit">Submit</button>
     </form>
@@ -43,21 +43,35 @@
 </template>
 
 <script>
-  
   import FooterView from './FooterView.vue';
+  import axios from 'axios'
+
   export default {
     components:{ FooterView },
     data() {
     return {
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
+      contact: {
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      },
       showSuccess: false,
     };
   },
   methods: {
     submitForm() {
+      let apiUrl = 'http://localhost:3000/contacts'
+      axios.post(apiUrl, this.contact)
+      .then(response => {
+        console.log(response)
+        this.contact = {
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        }
+      })
       this.showSuccess = true;
     },
   },

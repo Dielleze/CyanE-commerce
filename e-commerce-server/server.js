@@ -16,7 +16,7 @@ mongoose.connect(`${process.env.MONGO_CONNECTION_UTI}/${process.env.MONGO_DB_NAM
     app.use(express.json())
 
     app.use('/products', productRouter);
-    app.use('/contacts', contactRouter)
+    app.use('/contacts', contactRouter);
     
     app.get('*', (req,res)=>{
         res.json({success:true});
